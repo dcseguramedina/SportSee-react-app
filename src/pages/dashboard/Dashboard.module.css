@@ -1,0 +1,126 @@
+.dashboardWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin: auto;
+    padding: 3rem 6.5rem;
+    background: #ffffff;
+
+    @media (max-width: 1280px) {
+        padding: 3rem 5.5rem;
+    }
+}
+
+.dashboardHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 3rem;
+
+    @media (max-width: 1280px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+.dashboardTitle {
+    text-align: left;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 2.5rem;
+}
+
+.title span{
+    color: #ff0101;
+}
+
+.dashboardSelect {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.dashboardContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+
+    @media (max-width: 1280px) {
+        flex-wrap: wrap;
+    }
+}
+
+.mainSection {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    width: 100%;
+
+    @media (max-width: 1280px) {
+        min-width: 720px;
+    }
+}
+
+.mainChart {
+    width: 100%;
+    min-height: 320px;
+    border-radius: 1rem;
+    background-color: #FBFBFB;
+}
+
+.chartsRow {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+    height: fit-content;
+}
+
+.chart {
+    flex: 1 1 0;
+    align-items: center;
+    justify-content: center;
+    min-height: 263px;
+    border-radius: 0.8rem;
+}
+
+.mainAside {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    min-width: 260px;
+    height: fit-content;
+
+    @media (max-width: 1280px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        min-width: 720px;
+        margin: auto;
+    }
+}
+
+.badgeBgColoreRed {
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.badgeBgColoreBlue {
+    background-color: rgba(74, 184, 255, 0.1);
+}
+
+.badgeBgColoreYellow {
+    background-color: rgba(249, 206, 35, 0.1);
+}
+
+.badgeBgColorePink {
+    background-color: rgba(253, 81, 129, 0.1);
+}

@@ -1,0 +1,21 @@
+.appHeader {
+    width: 100%;
+}
+
+.appContent {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 130px;
+    /* Prevents shrinking */
+    flex-shrink: 0;
+}
+
+.content {
+    flex-grow: 1;
+    /* Ensures content starts next to sidebar */
+    min-width: 0;
+}

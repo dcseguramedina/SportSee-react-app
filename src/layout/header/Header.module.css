@@ -1,0 +1,43 @@
+.headerContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    padding: 1rem;
+    background-color: #000;
+    box-sizing: border-box;
+}
+
+.headerLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 178px;
+    height: 60px;
+    padding: 0 1rem;
+    flex-shrink: 0;
+}
+
+.headerNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+    flex-grow: 1;
+    padding: 0 2rem;
+}
+
+.headerNav a {
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.headerNav a:hover,
+.headerNav a:focus {
+    color: #ccc;
+}

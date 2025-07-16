@@ -1,0 +1,43 @@
+.badge {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 124px;
+    border-radius: 0.6rem;
+    background-color: #FBFBFB;
+
+    @media (max-width: 1280px) {
+        width: 40%;
+    }
+}
+
+.badgeImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+}
+
+.badgeImage img {
+    width: 17px;
+    height: 20px;
+    z-index: 1;
+    opacity: 1;
+}
+
+.badgeContent {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.badgeContent p {
+    margin: 0;
+    font-weight: bold;
+
+}

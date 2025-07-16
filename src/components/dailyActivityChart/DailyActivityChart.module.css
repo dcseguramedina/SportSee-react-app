@@ -1,0 +1,16 @@
+.chartContainer {
+    background: #fbfbfb;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.chartTitle {
+    text-align: left;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.noData {
+    padding: 10px;
+    text-align: center;
+}

@@ -1,0 +1,12 @@
+.chartContainer {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background: #282D30;
+    border-radius: 5px;
+}
+
+.noData {
+    padding: 10px;
+    text-align: center;
+}
