@@ -65,20 +65,20 @@ const DailyActivityChart = ({ data }) => {
                         verticalAlign="top"
                         align="right"
                         iconType="circle"
-                        height={36}
+                        height={50}
                     />
                     {/* Bar for kilograms (weight), dark gray fill */}
                     <Bar
                         dataKey="kilogram"
                         fill="#282D30"
-                        radius={[0, 0, 0, 0]}
+                        radius={[5, 5, 0, 0]}
                         name="Poids (kg)"
                     />
                     {/* Bar for calories burned, red fill */}
                     <Bar
                         dataKey="calories"
                         fill="#E60000"
-                        radius={[0, 0, 0, 0]}
+                        radius={[5, 5, 0, 0]}
                         name="Calories brûlées (Kcal)"
                     />
                 </BarChart>
