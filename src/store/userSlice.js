@@ -7,7 +7,7 @@ const initialState = {
     activity: data.activity,
     averageSessions: data.averageSessions,
     performance: data.performance,
-    selectedUserId: 18, // Default selected user
+    selectedUserId: 18, // Default selected user (app dev)
 };
 
 // Create the user slice
@@ -21,6 +21,5 @@ const userSlice = createSlice({
     },
 });
 
-// Export actions and reducer
 export const { selectUser } = userSlice.actions;
 export default userSlice.reducer;

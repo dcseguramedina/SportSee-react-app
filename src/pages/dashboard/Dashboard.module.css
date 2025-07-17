@@ -83,13 +83,21 @@
     gap: 2rem;
     width: 100%;
     height: fit-content;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 1200px) {
+        flex-wrap: wrap-reverse;
+    }
 }
 
 .chart {
     flex: 1 1 0;
     align-items: center;
     justify-content: center;
-    min-height: 263px;
+    min-width: 275px;
+    max-width: 275px;
+    min-height: 275px;
     border-radius: 0.8rem;
 }
 

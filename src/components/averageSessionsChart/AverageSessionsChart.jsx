@@ -12,9 +12,7 @@ import styles from './AverageSessionsChart.module.css';
 // Array mapping day numbers (1-7) to French day initials (L = Lundi, M = Mardi, etc.)
 const dayMap = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
 
-// Custom tooltip component to display session length on hover
 const CustomTooltip = ({ active, payload }) => {
-    // Custom tooltip component to display session length on hover
     if (active && payload && payload.length) {
         return (
             <div className={styles.tooltip}>
@@ -23,7 +21,6 @@ const CustomTooltip = ({ active, payload }) => {
             </div>
         );
     }
-    // Return null if tooltip should not be displayed
     return null;
 };
 

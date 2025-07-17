@@ -18,17 +18,44 @@ const DailyActivityChart = ({ data }) => {
         return <p className={styles.noData}>Aucune donnée pour l'activité quotidienne.</p>;
     }
 
+    const renderCustomTooltip = ({ active, payload }) => {
+        if (active && payload && payload.length) {
+            return (
+                <div className={styles.customTooltip}>
+                    <p className="label">{`${payload[0].value}kg`}</p>
+                    <p className="label">{`${payload[1].value}Kcal`}</p>
+                </div>
+            )
+        }
+        return null
+    }
+
+    const renderCustomLegend = (props) => {
+        const { payload } = props;
+        return (
+            <ul className={styles.legendList}>
+                {payload.map((entry, index) => (
+                    <li key={`item-${index}`} className={styles.legendItem}>
+                        <span className={styles.legendCircle} style={{backgroundColor: entry.color,}}/>
+                        {entry.value}
+                    </li>
+                ))}
+            </ul>
+        );
+    };
+
     return (
         <div className={styles.chartContainer}>
             {/* Chart title */}
             <h2 className={styles.chartTitle}>Activité quotidienne</h2>
             {/* ResponsiveContainer makes the chart adapt to container size */}
-            <ResponsiveContainer width="100%" height={250}>
+            <ResponsiveContainer width="100%" height={280}>
                 {/* BarChart component renders the bar chart using provided data */}
                 <BarChart
                     data={data}
                     margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                    barGap={8}
+                    barGap={10}
+                    barCategoryGap="38%"
                 >
                     {/* CartesianGrid adds a grid to the chart, vertical lines disabled */}
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -45,40 +72,27 @@ const DailyActivityChart = ({ data }) => {
                         tickCount={4}
                     />
                     {/* Tooltip displays data on hover with custom styling */}
-                    <Tooltip
-                        contentStyle={{
-                            backgroundColor: '#e60000',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '4px',
-                            fontSize: '0.8rem',
-                        }}
-                        // Custom formatter for tooltip text: adds units
-                        formatter={(value, name) =>
-                            name === 'kilogram'
-                                ? [`${value}kg`, 'Poids']
-                                : [`${value}Kcal`, 'Calories brûlées']
-                        }
-                    />
+                    <Tooltip content={renderCustomTooltip}/>
                     {/* Legend displays which color corresponds to which data */}
                     <Legend
+                        content={renderCustomLegend}
                         verticalAlign="top"
                         align="right"
                         iconType="circle"
-                        height={36}
+                        height={50}
                     />
-                    {/* Bar for kilograms (weight), dark gray fill */}
+                    {/* Bar for kilograms (weight) */}
                     <Bar
                         dataKey="kilogram"
                         fill="#282D30"
-                        radius={[0, 0, 0, 0]}
+                        radius={[5, 5, 0, 0]}
                         name="Poids (kg)"
                     />
-                    {/* Bar for calories burned, red fill */}
+                    {/* Bar for calories burned */}
                     <Bar
                         dataKey="calories"
                         fill="#E60000"
-                        radius={[0, 0, 0, 0]}
+                        radius={[5, 5, 0, 0]}
                         name="Calories brûlées (Kcal)"
                     />
                 </BarChart>

@@ -9,10 +9,11 @@
 
 .chartTitle {
     position: absolute;
-    top: 10px;
-    left: 20px;
-    font-size: 1rem;
-    font-weight: 500;
+    top: 20px;
+    left: 40px;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 400;
 }
 
 .chartText {
@@ -29,6 +30,8 @@
 }
 
 .chartText p {
-    font-size: 0.9rem;
+    margin: 0.3rem;
+    font-size: 1.2rem;
     color: #74798C;
+    line-height: 1.5rem;
 }
