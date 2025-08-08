@@ -2,6 +2,7 @@ import data from '../data/data.json'
 import { BarChartDataModel } from '../models/BarChartData.model.js';
 import { LineChartDataModel } from '../models/LineChartData.model.js';
 import { RadarChartDataModel } from '../models/RadarChartData.model.js';
+import {PieChartDataModel} from '../models/PieChartData.model.js';
 
 // Retrieve a mock user by their ID from the local `data.users` array
 export const getMockUser = async (userId) => {
@@ -50,6 +51,23 @@ export const getMockPerformance = async (userId) => {
         if (!response) throw new Error('No data found');
         // Return a new RadarChartDataModel with the received data
         return new RadarChartDataModel(response);
+
+    } catch (error) {
+        // Log any errors to the console
+        console.error('Error fetching data:', error);
+        // Rethrow the error so it can be handled further up the call stack
+        throw error;
+    }
+};
+// Retrieve mock score data for a user by their ID and convert it to a PieChartDataModel
+export const getMockScore = async (userId) => {
+    try {
+        // Find the user object with matching ID
+        const response = data.users.find((user) => user.id === userId) ?? null;
+        // Throw an error if there is no data for the given userId
+        if (!response) throw new Error('No data found');
+        // Return a new RadarChartDataModel with the received data
+        return new PieChartDataModel(response);
 
     } catch (error) {
         // Log any errors to the console

@@ -1,6 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {getUser, getActivity, getAverageSessions, getPerformance } from '../../services/userService.js';
-import {getMockUser, getMockActivity, getMockAverageSessions, getMockPerformance} from '../../services/mockService.js';
+import {getUser, getActivity, getAverageSessions, getPerformance, getScore} from '../../services/userService.js';
+import {
+    getMockUser,
+    getMockActivity,
+    getMockAverageSessions,
+    getMockPerformance,
+    getMockScore
+} from '../../services/mockService.js';
 import DailyActivityChart from '../../components/dailyActivityChart/DailyActivityChart.jsx';
 import AverageSessionsChart from '../../components/averageSessionsChart/AverageSessionsChart.jsx';
 import PerformanceChart from '../../components/performanceChart/PerformanceChart.jsx';
@@ -22,6 +28,7 @@ const Dashboard = () => {
     const [activity, setActivity] = useState(null);
     const [averageSessions, setAverageSessions] = useState(null);
     const [performance, setPerformance] = useState(null);
+    const [score, setScore] = useState(null);
 
     // Handler for user selection change
     const handleUserChange = (e) => {
@@ -40,7 +47,6 @@ const Dashboard = () => {
         try {
             // Fetch user data from Api
             const userRes = await getUser(userId);
-            console.log(userRes);
             // Check if user data is valid
             if (!userRes || !userRes.data || !userRes.data.data) {
                 // Reject if there's no valid user data
@@ -49,15 +55,17 @@ const Dashboard = () => {
             // Set user state with actual user data (userRes.data.data)
             setUser(userRes.data.data);
             // Fetch other data in parallel
-            const [activityRes, sessionsRes, perfRes] = await Promise.all([
+            const [activityRes, sessionsRes, perfRes, scoreRes] = await Promise.all([
                 getActivity(userId),
                 getAverageSessions(userId),
                 getPerformance(userId),
+                getScore(userId),
             ]);
             // Set respective states with the nested data
             setActivity(activityRes.activitySession);
             setAverageSessions(sessionsRes.averageSession);
             setPerformance(perfRes.performanceData);
+            setScore(scoreRes.scoreData)
         } catch (error) {
             console.error("Error from API service:", error);
             // Throw error to trigger fallback in fetchUserData
@@ -73,15 +81,17 @@ const Dashboard = () => {
             // Set user state with actual user data (mockRes)
             setUser(mockRes);
             // Fetch other data in parallel
-            const [activityMockRes, sessionsMockRes, perfMockRes] = await Promise.all([
+            const [activityMockRes, sessionsMockRes, perfMockRes, scoreMockRes] = await Promise.all([
                 getMockActivity(userId),
                 getMockAverageSessions(userId),
                 getMockPerformance(userId),
+                getMockScore(userId),
             ]);
             // Set respective states with the nested data
             setActivity(activityMockRes.activitySession);
             setAverageSessions(sessionsMockRes.averageSession);
             setPerformance(perfMockRes.performanceData);
+            setScore(scoreMockRes.scoreData);
         } catch (error) {
             console.error("Erreur lors de la récupération des données mock:", error);
         }
@@ -158,7 +168,7 @@ const Dashboard = () => {
                             <PerformanceChart data={performance}/>
                         </div>
                         <div id="chart-score" className={styles.chart}>
-                            <ScoreChart score={user?.score || user?.todayScore}/>
+                            <ScoreChart score={score}/>
                         </div>
                     </div>
                 </section>
